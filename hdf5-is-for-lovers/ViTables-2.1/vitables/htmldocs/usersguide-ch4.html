@@ -1,0 +1,143 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>4. Editing Files &mdash; ViTables Users&#39; Guide v2.1 documentation</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ViTables Users&#39; Guide v2.1 documentation" href="index.html" />
+    <link rel="next" title="5. Configuring ViTables" href="usersguide-ch5.html" />
+    <link rel="prev" title="3. Browsing and Querying Datasets" href="usersguide-ch3.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usersguide-ch5.html" title="5. Configuring ViTables"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch3.html" title="3. Browsing and Querying Datasets"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="editing-files">
+<h1>4. Editing Files<a class="headerlink" href="#editing-files" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we are going to describe briefly the editing
+capabilities of <em>ViTables</em>.</p>
+<div class="section" id="creating-complex-hierarchies">
+<h2>4.1. Creating Complex Hierarchies<a class="headerlink" href="#creating-complex-hierarchies" title="Permalink to this headline">¶</a></h2>
+<p><em>ViTables</em> supports a complete set of
+editing operations on files and nodes. The result of these operations is
+made immediately visible on the databases tree viewer.</p>
+<p>To create a new file in write mode, just issue the command <em class="menuselection">File ‣ New…</em> (<tt class="kbd docutils literal"><span class="pre">Ctrl-N</span></tt>).
+By default, the file will be created with a <tt class="docutils literal"><span class="pre">.h5</span></tt>
+extension but you can provide your desired extension.</p>
+<p>You can add new empty groups to a writable file as easily as you
+create a new file. Simply select a group on the the tree pane and launch
+the command
+<em class="menuselection">Node ‣ New group…</em>.
+A new, empty group will be added to the previously selected group. By
+combining this operation with file creation, you can easily create
+complex hierarchies. Later on, you can populate the hierarchies with real
+data using your PyTables programs.</p>
+<div class="figure" id="group-creation">
+<img alt="_images/groupCreation.png" src="_images/groupCreation.png" style="width: 80%;" />
+<p class="caption">Creating a new group</p>
+</div>
+</div>
+<div class="section" id="editing-object-trees">
+<h2>4.2. Editing Object Trees<a class="headerlink" href="#editing-object-trees" title="Permalink to this headline">¶</a></h2>
+<p>Files opened in write mode can be modified by moving their nodes
+(groups and leaves) around. From the
+<em class="guilabel">Node</em>
+menu you can copy, paste, cut, rename or delete any selected node
+(except root groups). Typical keyboard shortcuts are available for copy
+and paste operations. Of course, you can drag and drop nodes from one
+location to a different one using the mouse.</p>
+<p>Nodes can be moved to a different location in the object tree, but
+can also be reallocated in a different file. This way you can
+<em>merge</em> open files in a very flexible and comfortable
+way.</p>
+<p>As usual, while an operation is being performed on a given node,
+the shape of the mouse cursor will change into a clock, reminding you
+that a PyTables operation is being executed.</p>
+<p>Given a node opened in read-write mode you can edit its user attributes from
+the User attributes page
+(see <a class="reference internal" href="#editing-user-attributes"><em>this Figure</em></a>)
+in the node Properties dialog. This page contains the user attributes
+table. You can add and remove attributes with the respective buttons or
+you can edit any existing attribute by clicking the table cell that you
+want to modify and introducing the new value. This way you can change
+name, value and type of any existing attribute.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">multidimensional attribute values are not supported by <em>ViTables</em>. Also be aware that scalar attributes will be saved as scalar Numpy objects instead of serialized using cPickle (which used to be the default PyTables behavior). This way you will be able to read them using generic <abbr>HDF5</abbr> tools, not just PyTables.</p>
+</div>
+<p>Finally, the value of the TITLE system attribute can also be
+edited.
+Just click its cell in the System Attributes tab and enter the desired
+value.</p>
+<div class="figure" id="editing-user-attributes">
+<img alt="_images/editingUserAttrs.png" src="_images/editingUserAttrs.png" style="width: 60%;" />
+<p class="caption">Editing user attributes</p>
+</div>
+</div>
+<div class="section" id="editing-leaves">
+<h2>4.3. Editing Leaves<a class="headerlink" href="#editing-leaves" title="Permalink to this headline">¶</a></h2>
+<p>At the moment of writing, editing the real data stored in leaves
+has not yet been implemented.</p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usersguide-ch5.html" title="5. Configuring ViTables"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch3.html" title="3. Browsing and Querying Datasets"
+             >previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Vicent Mas.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

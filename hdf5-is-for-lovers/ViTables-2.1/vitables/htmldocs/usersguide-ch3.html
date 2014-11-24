@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>3. Browsing and Querying Datasets &mdash; ViTables Users&#39; Guide v2.1 documentation</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ViTables Users&#39; Guide v2.1 documentation" href="index.html" />
+    <link rel="next" title="4. Editing Files" href="usersguide-ch4.html" />
+    <link rel="prev" title="2. First Steps" href="usersguide-ch2.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usersguide-ch4.html" title="4. Editing Files"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch2.html" title="2. First Steps"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="browsing-and-querying-datasets">
+<h1>3. Browsing and Querying Datasets<a class="headerlink" href="#browsing-and-querying-datasets" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we are going to describe how the information
+contained in a dataset can be navigated and filtered.</p>
+<div class="section" id="browsing-datasets">
+<h2>3.1. Browsing Datasets<a class="headerlink" href="#browsing-datasets" title="Permalink to this headline">¶</a></h2>
+<p>A noticeable aspect of views is the visualization speed. Views show
+data nearly as quickly as PyTables accesses them. As a consequence, very
+large datasets (with up to 2^64 rows) can be browsed stunningly fast.</p>
+<div class="figure" id="browse-large-dataset">
+<img alt="_images/browseDataset.png" src="_images/browseDataset.png" style="width: 861px;" />
+<p class="caption">Browsing a large dataset</p>
+</div>
+<p>As said in the previous chapter, datasets are displayed in views. They are spreadsheet-like windows so can be navigated as you would expect:
+via scrollbar, keyboard or wheel of mouse.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">what makes <em>ViTables</em> views interesting is that <em>the navigation speed is independent of the view size</em>: a table with several thousand million rows is navigated as quickly as a table with just a few dozens rows.</p>
+</div>
+<p>Another interesting feature of views is the ability to zoom in on
+cells that contain multidimensional data. When you double-click in a
+cell,
+it is displayed in its own view, reducing by two the number of
+dimensions of the displayed data. For instance, a cell containing a
+vector
+is displayed as a one column table of scalars. A cell that contains
+two-dimensional data will be shown as a bidimensional table of scalars.
+And so on. In general, a cell containing N-dimensional data will be
+displayed as a table of N-2 dimensions data. Zoom can be applied as many
+times as needed, so that multi-dimensional cells can be inspected until
+you get a table of scalars. Finally, if you try to zoom in on a cell that
+contains a scalar value, this value will be presented alone in a view;
+this can be useful to visualize large scalar values (for example, large
+strings) that doesn&#8217;t fit on regular columns.</p>
+<div class="figure" id="zoom-cell">
+<img alt="_images/zoomingCells.png" src="_images/zoomingCells.png" style="width: 861px;" />
+<p class="caption">Zooming a cell</p>
+</div>
+</div>
+<div class="section" id="getting-info">
+<h2>3.2. Getting Info<a class="headerlink" href="#getting-info" title="Permalink to this headline">¶</a></h2>
+<p>For a given node two kinds of information are available: metadata
+and data. From their metadata you can retrieve information about the
+objects on disk, such as table and column names, titles, number of rows,
+data types in columns or attributes, among others.</p>
+<p>The available metadata about a given node (group or leaf) can be
+accessed by right-clicking the mouse on the node and launching the
+<em class="guilabel">Properties</em> command from the context menu
+that appears. This can also be achieved from the <em class="guilabel">Node</em>
+menu. Then the <a class="reference internal" href="#properties-dialog"><em>Properties dialog</em></a>,
+that contains the requested metadata, is displayed. The dialog is made of
+three tabs labelled as General, System attributes and User attributes.
+The General tab contains generic information about the selected node,
+i.e. name, path, etc. The System and User tabs
+contain tables that describe the attributes of the node.</p>
+<div class="figure" id="properties-dialog">
+<img alt="_images/propertiesDlg.png" src="_images/propertiesDlg.png" style="width: 446px;" />
+<p class="caption">The Properties dialog</p>
+</div>
+<p>Aside from the Properties dialog, you can get information in
+several other ways.</p>
+<p>The full path of the node currently selected in the tree view is
+displayed in the status bar. This can be
+useful when the object tree is large and guessing a full path is not
+easy.</p>
+<p>The top left icon of views shows the kind of displayed data
+(array or table).</p>
+<p>Finally, some generic information can be obtained by launching the
+command
+<em class="menuselection">Help ‣ WhatIsThis</em>
+(or clicking the appropriate button on the corresponding toolbar).</p>
+</div>
+<div class="section" id="querying-tables">
+<h2>3.3. Querying Tables<a class="headerlink" href="#querying-tables" title="Permalink to this headline">¶</a></h2>
+<p>An interesting feature of <em>ViTables</em> is its capability to make table selections.
+This means that we can select a set of table rows that fulfill a given condition. You can filter any table
+(even if it is closed) by issuing the command</p>
+<p><em class="menuselection">Dataset ‣ Query…</em>
+A dialog (see <a class="reference internal" href="#query-dlg"><em>this Figure</em></a>) will
+be displayed where you can create a query and select the range of rows to
+which the query will apply. Notice that, <em>you can make
+complex queries, i.e. queries that involve more than one table field.
+However the queried fields cannot be multidimensional or contain data
+with Complex data type</em>.</p>
+<p><em>ViTables</em> always do its best for not being frozen due to out of memory problems when you do complex queries or the queried table is huge (or both) but it is not guarateed that it can achieve this goal.</p>
+<p>The selected rows are stored in a new table (but not removed from
+its original location) that we will call filtered table from here on.
+Filtered tables are stored in a temporary database <a class="footnote-reference" href="#f2" id="id1">[1]</a> labeled as <em>Query results</em> in the databases tree viewer. The <em>Query results</em> node is always placed at the bottom of the databases tree.</p>
+<p>Filtered tables can be edited as any other leaf opened in read-write mode.</p>
+<p>By default an automatic title FilteredTable_X is given to the X-th filtered table created. In addition, those tables have three user attributes that are, in principle, only defined for filtered tables.
+These attributes are:</p>
+<dl class="glossary docutils">
+<dt id="term-query">query</dt>
+<dd>the applied query</dd>
+<dt id="term-query-path">query_path</dt>
+<dd>the full path of the queried file</dd>
+<dt id="term-query-table">query_table</dt>
+<dd>the full path of the queried table in the object tree hierarchy</dd>
+</dl>
+<div class="figure" id="query-dlg">
+<img alt="_images/newFilteredTable.png" src="_images/newFilteredTable.png" style="width: 70%;" />
+<p class="caption">The New Query dialog</p>
+</div>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Every time a <em>ViTables</em> session starts, a new temporary database is created from scratch. This database has a flat structure and is stored with a unique name in a temporary directory so the operating system will remove it every time the directory is cleaned.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usersguide-ch4.html" title="4. Editing Files"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch2.html" title="2. First Steps"
+             >previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Vicent Mas.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. Configuring ViTables &mdash; ViTables Users&#39; Guide v2.1 documentation</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ViTables Users&#39; Guide v2.1 documentation" href="index.html" />
+    <link rel="next" title="6. About Plugins" href="usersguide-app1.html" />
+    <link rel="prev" title="4. Editing Files" href="usersguide-ch4.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usersguide-app1.html" title="6. About Plugins"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch4.html" title="4. Editing Files"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-vitables">
+<span id="configuration-chapter"></span><h1>5. Configuring ViTables<a class="headerlink" href="#configuring-vitables" title="Permalink to this headline">¶</a></h1>
+<p>As mentioned earlier, many aspects of the <em>ViTables</em> behaviour can
+be customized by you through the
+<em class="menuselection">Settings ‣ Preferences</em>
+command.</p>
+<p>It shows a dialog offering you several customization
+possibilities. The dialog is made of three stacked pages,
+<em class="guilabel">General</em>, <em class="guilabel">Look &amp; Feel</em> and
+<em class="guilabel">Plugins</em>.</p>
+<p>The <em class="guilabel">General</em> page allows to change the
+<em>ViTables</em> behavior at startup. You can set the
+initial working directory to be that one from which <em>ViTables</em> is starting or
+to be the last used
+working directory. And you can recover your last working session.</p>
+<p>The <em class="guilabel">Look &amp; Feel</em> page allows to change visual
+aspects of the application such as fonts, colors or even the general style,
+so you can adapt the global aspect of <em>ViTables</em>
+to what would be expected on your platform.</p>
+<p>From the <em class="guilabel">Plugins</em> page the plugins can be managed. You
+can add or remove searching paths for plugins and enable or disable the available
+plugins</p>
+<p>The <em class="guilabel">OK</em> button will apply the new settings and
+make them permanent by saving them in the Windows registry, in a
+configuration file (on Unix platforms) or in a plist file (on Mac OS X platforms). Even
+if settings are stored in a plain text file editing it by hand is not
+recommended. Some settings, like fonts or geometry settings <a class="footnote-reference" href="#f3" id="id1">[1]</a>, are stored in a way not really intended to be modified manually.</p>
+<p>The configuration file is divided into sections, labeled as
+[section_name]. Every section is made of subsections
+written as key/value pairs and representing the item that is being
+customized.
+Currently the following sections/subsections are available:</p>
+<dl class="glossary docutils">
+<dt id="term-geometry-hsplitter">[Geometry] HSplitter</dt>
+<dd>the size of the horizontal splitter</dd>
+<dt id="term-geometry-layout">[Geometry] Layout</dt>
+<dd>the position and size of toolbars and dock widgets</dd>
+<dt id="term-geometry-position">[Geometry] Position</dt>
+<dd>the position and size of the application window</dd>
+<dt id="term-geometry-vsplitter">[Geometry] VSplitter</dt>
+<dd>the size of the vertical splitter</dd>
+<dt id="term-helpbrowser-bookmarks">[HelpBrowser] Bookmarks</dt>
+<dd>the list of current bookmarks of the help browser</dd>
+<dt id="term-helpbrowser-history">[HelpBrowser] History</dt>
+<dd>the navigation history of the help browser</dd>
+<dt id="term-logger-font">[Logger] Font</dt>
+<dd>the logger font</dd>
+<dt id="term-logger-paper">[Logger] Paper</dt>
+<dd>the logger background color</dd>
+<dt id="term-logger-text">[Logger] Text</dt>
+<dd>the logger text color</dd>
+<dt id="term-look-currentstyle">[Look] currentStyle</dt>
+<dd>the style that defines the application look &amp; feel. Available styles fit the most common platforms, i.e., Windows, Unix (Motif and SGI flavors), and Macintosh</dd>
+<dt id="term-plugins-enabled">[Plugins] Enabled</dt>
+<dd>the list of full paths of enabled plugins</dd>
+<dt id="term-plugins-paths">[Plugins] Paths</dt>
+<dd>the list of paths where plugins will be searched</dd>
+<dt id="term-recent-files">[Recent] Files</dt>
+<dd>the list of files recently opened</dd>
+<dt id="term-session-files">[Session] Files</dt>
+<dd>the list of files and views that were open the last time <em>ViTables</em> was closed</dd>
+<dt id="term-startup-lastworkingdir">[Startup] lastWorkingDir</dt>
+<dd>the last directory accessed from within <em>ViTables</em> via Open File dialog</dd>
+<dt id="term-startup-restorelastsession">[Startup] restoreLastSession</dt>
+<dd>the last working session is restored (if possible) which means that both files and leaves that were open in the last session will be reopen at application startup.</dd>
+<dt id="term-startup-startupworkingdir">[Startup] startupWorkingDir</dt>
+<dd>possible values are <em>current</em>, and <em>last</em>. These values indicate how the application will setup the startup working directory.</dd>
+<dt id="term-workspace-background">[Workspace] Background</dt>
+<dd>the workspace background brush</dd>
+</dl>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Entries in the Geometry section allow for keeping the aspect, size and position of the application window between sessions.</td></tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usersguide-app1.html" title="6. About Plugins"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch4.html" title="4. Editing Files"
+             >previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Vicent Mas.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

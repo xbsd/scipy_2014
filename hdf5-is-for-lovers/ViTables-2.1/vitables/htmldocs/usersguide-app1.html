@@ -1,0 +1,94 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>6. About Plugins &mdash; ViTables Users&#39; Guide v2.1 documentation</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="ViTables Users&#39; Guide v2.1 documentation" href="index.html" />
+    <link rel="next" title="7. The Help Browser" href="usersguide-app2.html" />
+    <link rel="prev" title="5. Configuring ViTables" href="usersguide-ch5.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usersguide-app2.html" title="7. The Help Browser"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch5.html" title="5. Configuring ViTables"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="about-plugins">
+<span id="appendix-a"></span><h1>6. About Plugins<a class="headerlink" href="#about-plugins" title="Permalink to this headline">¶</a></h1>
+<p>Since version 2.1 <em>ViTables</em> has a simple but powerful plugins framework.</p>
+<p>If you are interested in writing plugins the next paragraphs can be of utility. If not you can skip to the list of available plugins.</p>
+<p>Plugins can live anywhere in your hard disk. A plugin can be a pure Python module or can have a package structure (i.e. a directory with a <tt class="xref py py-mod docutils literal"><span class="pre">__init__.py</span></tt> file). Packages can have as many directories as you want but plugins must be located at top level of the package.</p>
+<p>The use of contracts is not enforced for writing plugins so you have nearly complete freedom for writing. The only requirement that you must fulfil is to declare in your plugin a variable named <tt class="xref py py-const docutils literal"><span class="pre">plugin_class</span></tt> and set it to the name of the class invoqued when your plugin is executed by <em>ViTables</em>.</p>
+<p>In some cases it can be useful to use convenience variables or methods. For instance, if you are going to load the <cite>Menu</cite> plugin then you may be interested in declare the <tt class="xref py py-const docutils literal"><span class="pre">__version__</span></tt> variable in your plugin. You can also consider to define methods <tt class="xref py py-meth docutils literal"><span class="pre">configure()</span></tt> and/or <tt class="xref py py-meth docutils literal"><span class="pre">helpAbout()</span></tt>.</p>
+<p>Of course some knowledge (not necessarily a deep one) of the <em>ViTables</em> code is required in order to bind your plugin to the application core. This task is commonly achieved via the menu bar of the main window or via the signals/slots mechanism (convenience signals can be defined in the application if needed).</p>
+<p>If you need more help just send an email to developers or ask to the <em>ViTables</em> Users&#8217; Group.</p>
+<p>Three plugins are currently distributed along with the application:</p>
+<dl class="glossary docutils">
+<dt id="term-menu">Menu</dt>
+<dd>adds a <em class="guilabel">Plugins</em> menu to the menu bar. For every loaded plugin this menu has an entry from which a short description about the plugin is shown to users.</dd>
+<dt id="term-time-series">Time series</dt>
+<dd>formats time series in a human friendly way. It supports PyTables time datatypes and PyTables time series created via scikits.timeseries module. The format used for displaying times can be configured by user via the <cite>Menu</cite> plugin or editing by hand the <tt class="file docutils literal"><span class="pre">time_format.ini</span></tt> configuration file.</dd>
+<dt id="term-csv">CSV</dt>
+<dd>provides import/export capabilities from/to <abbr>CSV</abbr> files.</dd>
+</dl>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usersguide-app2.html" title="7. The Help Browser"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="usersguide-ch5.html" title="5. Configuring ViTables"
+             >previous</a> |</li>
+        <li><a href="index.html">ViTables Users&#39; Guide v2.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Vicent Mas.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
