@@ -1,0 +1,69 @@
+
+Frequentist
+-----------
+- Data is Random, they are realizations of random processes and change
+- But parameters are "fixed". The parameter values may be unknown, but they are still fixed
+- So, we condition on them
+- Frequentist model is f(y|θ)
+
+For example, lets say that we have collected some data on the prevalence of autism spectrum disorder (ASD) in some defined population. Our sample includes n sampled children, y of them having been diagnosed with autism. A frequentist estimator of the prevalence p is:
+p_hat=y/n
+
+Bayesian
+-----------
+- Data is fixed.  They used to be random, but once they were written into your lab notebook/spreadsheet/IPython notebook they do not change.
+
+- Model parameters might not be random, but Bayesians use probability distributions to describe the uncertainty in parameter values and therefore they are treated as "random". In some cases, it is useful to consider parameters as having sampled from probability distributions
+
+- Bayesian Model is p(θ|y) - also referred to as inverse probability
+
+Confidence Intervals
+--------------------
+
+Confidence Intervals are also "fixed". Recall that in frequentist world, theta is fixed == theta has no probability. Hence, the interval itself and NOT theta is the random variable. 
+
+The actual interval calculated from the data is just one possible realization of a random process, and it must be strictly interpreted only in relation to an infinite sequence of identical trials that might be (but never are) conducted in practice.
+
+
+Frequentist -- Pr(a(Y)<θ<b(Y)|θ)=0.95
+
+Since they regard unknown parameters as random variables, Bayesians can and do use probability intervals to describe what is known about the value of an unknown quantity. These intervals are commonly known as credible intervals.
+
+Bayesian -- Pr(a(y)<θ<b(y)|Y=y)=0.95
+
+Notice that we condition here on the data y instead of the unknown θ. Thus, the endpoints are fixed and the variable is random.
+
+We are allowed to interpret this interval as:
+
+There is a 95% chance θ is between a and b.
+
+Classical Probability --
+
+Pr(X=x)=# x outcomes / # possible outcomes
+
+Frequentist Probability --
+
+Pr(X=x) = limn→∞  (# times x has occurred / # independent and identical trials)
+
+Subjective Probability --
+
+Pr (X=x)
+
+Subjective probability is a measure of one's uncertainty in the value of X. It characterizes the state of knowledge regarding some unknown quantity using probability.
+It is not associated with long-term frequencies nor with equal-probability events.
+
+For example:
+	X = the true prevalence of diabetes in Austin is < 15%
+	X = the blood type of the person sitting next to you is type A
+	X = the Nashville Predators will win next year's Stanley Cup
+	X = it is raining in Nashville
+
+
+Probability Distributions
+-------------------------
+
+Discrete - Probability Mass Function
+Continuous - Probability Density Function
+
+
+

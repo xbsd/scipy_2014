@@ -1,0 +1,132 @@
+hdf5 - for exabytes of data
+
+Documentation -- http://pytables.github.io/
+
+EArrays ~ Tables = Extensible Arrays
+
+Example --
+mask = (f.root.knights.cols.id[:] < 28)
+f.root.knights[mask]
+
+-- Data accessed in this way is mem mapped, so you only read in the elements that are needed.
+
+-- Tables are a high-level interface to extendable arrays of structs. -- Like a numpy array
+
+-- Currently, PyTables only allows one extendable dim.
+-- If you need multiple extendable dims, use h5py
+
+-- Chunking is one of the most important features of hdf5
+-- If you are going to use small amounts of data use smaller chunks
+-- If you are going to use larger amounts of data use larger chunks
+-- Datatypes also play a role
+-- Chunksize should be = approx. L1 cache or 1/2 of L1 cache
+
+
+-- Pandas csv reader has chunking functionality (like a pipe) !!!
+-- Sometimes your whitespace may increase in the file (due to chunk sizes ...), in these cases you can use repack
+
+-- in-core = in memory
+-- out-of-core = in-kernel, like hdf5
+-- you should balance in-core and out-of-core
+
+-- Array Creation in numpy in-core - wastes memory --
+	a = np.array(...)
+	b = np.array(...)
+	c = 42 * a + 28 * b + 6
+
+	This actually creates 3 "temporary arrays"
+	An array for 42 * a, one for 28 * b and another for b + 6
+	Not efficient (so takes up a lot of memory), but "better than disk"
+
+-- Another option -- less memory intensive
+	c = np.empty(...)
+	for i in range(len(c)):
+    		c[i] = 42 * a[i] + 28 * b[i] + 6
+But if a and b were HDF5 arrays on disk, individual element access time would kill you.
+Even with in memory NumPy arrays, there are problems with gratuitous Python type checking.
+
+-- Out-of-Core Operations (the way hdf5 would work)
+-- Say there was a virtual machine (or kernel) which could be fed arrays and perform specified operations.
+-- Giving this machine only chunks of data at a time, it could function on infinite-length data using only finite memory.
+	for i in range(0, len(a), 256):
+    		r0, r1 = a[i:i+256], b[i:i+256]
+    		multiply(r0, 42, r2)
+    		multiply(r1, 28, r3)
+    		add(r2, r3, r2); add(r2,  6, r2)
+    		c[i:i+256] = r2
+
+-- ** Still creating temporary tables, but only of the chunksize size **
+
+
+-- PyTables uses numexpr with hdf5
+-- PyTables implements a tb.Expr class which backends to the numexpr VM but has additional optimizations for disk reading and writing.
+
+-- PyTables implements a tb.Expr class which backends to the numexpr VM but has additional optimizations for disk reading and writing.
+-- The full array need never be in memory.
+
+-- The below will create the array on disk --
+	a = f.create_carray(f.root, 'a', tb.Float32Atom(dflt=1.), shape)
+
+-- expr = tb.Expr("a*b+c") # ... will load data from L1, L2 or memory
+
+-- where expressions - example below of where results are written to disk
+	tb.Table.where_append(dest, cond)
+
+-- Programmatically create expressions, if say you have a long list called 'friends',
+	alone_cond = "crono & ~" + " & ~".join(friends)
+
+-- Flush to write using Memory
+	f.root.log.flush()
+
+-- Very Important -- Query on compressed data could be faster than on uncompressed data
+
+Compression/Decompression is clearly more CPU intensive than simply blitting an array into memory.
+** However, because there is less total information to transfer, the time spent unpacking the array can be far less than moving the array around wholesale. **
+
+So - for small data, compressed data may take longer to query than uncompressed
+BUT - for large data, compressed data may be FASTER than query on uncompressed data
+
+	Compression is enabled in PyTables through filters.
+	# complevel goes from [0,9]
+	filters = tb.Filters(complevel=5, complib='blosc', ...)
+
+	# filters may be set on the whole file,
+	f = tb.open_file('/path/to/file', 'a', filters=filters)
+	f.filters = filters
+
+	# filters may also be set on most other nodes
+	f.create_table('/', 'table', desc, filters=filters)
+	f.root.group._v_filters = filters
+
+	Filters only act on chunked datasets.
+
+	Tips for choosing compression parameters:
+	- A mid-level (5) compression is sufficient. No need to go all the way up (9).
+	- Use zlib if you must guarantee complete portability.
+	- Use blosc all other times. It is optimized for HDF5.
+
+	- Automatic Chunksizing is done during compression/decompression, it is quite good
+
+-- create_carray = chunked array
+
+-- How to create sets (since they are really objects like dictionaries)
+	- Reduce to atomic type
+	- For example,
+
+	s = {1.0, 42, 77.7, 6E+1, True}
+	f.create_array('/', 's', [float(x) for x in s])
+
+-- There are also ways to re-index tables
+
+-- Compress - auto-chunksize - but what if you modity
+-- SQL vs HDF5 comparison
+-- Typical HDF5 filesize
+-- Any public datasets ?
+
+
+
+
+
+
+
+
